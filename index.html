@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NEXUS ARCADE</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- STARFIELD BG -->
+<div id="starfield"></div>
+
+<!-- GAME MODAL -->
+<div id="modal">
+  <div id="modal-inner">
+    <div id="modal-bar">
+      <div class="modal-info">
+        <img id="modal-thumb" src="" alt=""/>
+        <div>
+          <div id="modal-title"></div>
+          <div id="modal-cat"></div>
+        </div>
+      </div>
+      <div class="modal-btns">
+        <button class="icon-btn" id="fullscreen-btn" title="Fullscreen">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+          </svg>
+        </button>
+        <button class="icon-btn danger" id="close-modal" title="Close">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <iframe id="modal-iframe" allow="autoplay; fullscreen; pointer-lock; gamepad" allowfullscreen src=""></iframe>
+  </div>
+</div>
+
+<!-- APP SHELL -->
+<div id="app">
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="logo">NEXUS<span class="logo-sep">✦</span>ARCADE</div>
+    <div class="search-wrap">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+      </svg>
+      <input type="text" id="search" placeholder="Search 250+ games…"/>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <button class="nav-btn active" data-view="home">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
+    </button>
+    <button class="nav-btn" data-view="library">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="6" height="18"/><rect x="9" y="3" width="6" height="18"/><rect x="16" y="3" width="6" height="18"/></svg>
+      Library
+    </button>
+    <button class="nav-btn" data-view="categories">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      Categories
+    </button>
+    <button class="nav-btn" data-view="proxy">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+      Proxy
+    </button>
+    <button class="nav-btn" data-view="ai">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      AI Chat
+    </button>
+    <button class="nav-btn" data-view="android">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      Android
+    </button>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main id="main">
+
+    <!-- ─── HOME ─── -->
+    <div id="view-home">
+      <!-- Hero -->
+      <div id="hero">
+        <img id="hero-img" src="" alt="Featured Game"/>
+        <div class="hero-vignette"></div>
+        <div class="hero-scan"></div>
+        <div class="hero-dots" id="hero-dots"></div>
+        <div class="hero-content">
+          <div class="hero-badge"><div class="pulse"></div>FEATURED GAME</div>
+          <div class="hero-title" id="hero-title">Loading…</div>
+          <div class="hero-cat" id="hero-cat"></div>
+          <div class="hero-actions">
+            <button class="btn-play" id="hero-play">
+              <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
+              PLAY NOW
+            </button>
+            <div class="hero-rating">⭐ TOP PICK</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hot Games -->
+      <div class="section-hd">
+        <div class="section-accent"></div>
+        <h2>🔥 Hot Right Now</h2>
+        <div class="section-line"></div>
+        <span class="section-count" id="hot-count">0 Games</span>
+      </div>
+      <div class="game-grid" id="hot-grid"></div>
+
+      <div class="nebula-line"></div>
+
+      <!-- All Games Preview -->
+      <div class="section-hd">
+        <div class="section-accent"></div>
+        <h2>🌌 All Games</h2>
+        <div class="section-line"></div>
+        <span class="section-count" id="all-count">0 Games</span>
+      </div>
+      <div class="game-grid" id="all-grid"></div>
+    </div>
+
+    <!-- ─── LIBRARY ─── -->
+    <div id="view-library" style="display:none">
+      <div class="section-hd" style="margin-bottom:14px">
+        <div class="section-accent"></div>
+        <h2>🗄 Game Library</h2>
+        <div class="section-line"></div>
+        <span class="section-count" id="lib-count">0 Games</span>
+      </div>
+      <div class="cat-bar" id="cat-bar"></div>
+      <div class="game-grid" id="lib-grid"></div>
+    </div>
+
+    <!-- ─── CATEGORIES ─── -->
+    <div id="view-categories" style="display:none">
+      <div class="section-hd" style="margin-bottom:20px">
+        <div class="section-accent"></div>
+        <h2 id="cat-header-title">Categories</h2>
+        <div class="section-line"></div>
+        <button class="icon-btn" id="cat-back-btn" style="display:none">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        </button>
+      </div>
+      <div class="cat-grid-view" id="cat-grid-el"></div>
+      <div class="game-grid" id="cat-games-el" style="display:none"></div>
+    </div>
+
+    <!-- ─── PROXY ─── -->
+    <div id="view-proxy" style="display:none">
+      <div class="section-hd" style="margin-bottom:20px">
+        <div class="section-accent"></div>
+        <h2>🌐 Proxy</h2>
+      </div>
+      <div class="iframe-view">
+        <iframe src="https://etherealproxy.netlify.app/" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- ─── AI CHAT ─── -->
+    <div id="view-ai" style="display:none">
+      <div class="section-hd" style="margin-bottom:20px">
+        <div class="section-accent"></div>
+        <h2>🤖 AI Chat</h2>
+      </div>
+      <div class="iframe-view">
+        <iframe src="https://gptlite.vercel.app/chat" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- ─── ANDROID ─── -->
+    <div id="view-android" style="display:none">
+      <div class="section-hd" style="margin-bottom:20px">
+        <div class="section-accent"></div>
+        <h2>📱 Android Apps</h2>
+      </div>
+      <div class="iframe-view">
+        <iframe src="https://nowgg.fun/apps/uncube/7074/now.html" allow="autoplay; fullscreen; pointer-lock" allowfullscreen></iframe>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/games.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
